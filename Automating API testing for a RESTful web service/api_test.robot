@@ -3,18 +3,20 @@ Library  RequestsLibrary
 Library  JSONLibrary
 Variables  api_endpoints.py
 
+*** Variables ***
+${POSTS_URL}  https://jsonplaceholder.typicode.com/posts
+${USERS_URL}  https://jsonplaceholder.typicode.com/users
+
 *** Test Cases ***
 Get All Posts And Verify Schema
-    ${url}=  Get Variable Value  ${ENDPOINTS.posts.url}
-    Create Session  JsonPlaceholder  ${url}/
+    Create Session  JsonPlaceholder  ${POSTS_URL}
     ${response}=  GET On Session  JsonPlaceholder  /
     Status Should Be  200  ${response}
     ${json_data}=  Set Variable  ${response.json()}
     Verify JSON Schema  ${json_data}  ${ENDPOINTS.posts.schema}
 
 Get All Users And Verify Schema
-    ${url}=  Get Variable Value  ${ENDPOINTS.users.url}
-    Create Session  JsonPlaceholder  ${url}/
+    Create Session  JsonPlaceholder  ${USERS_URL}
     ${response}=  GET On Session  JsonPlaceholder  /
     Status Should Be  200  ${response}
     ${json_data}=  Set Variable  ${response.json()}
