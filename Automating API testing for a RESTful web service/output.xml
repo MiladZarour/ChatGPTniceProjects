@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0.2 (Python 3.10.11 on win32)" generated="20230419 21:53:43.357" rpa="false" schemaversion="3">
+<suite id="s1" name="Api Test" source="C:\Users\Milad\OneDrive\Desktop\GitHubRepositories\ChatGPTniceProjects\Automating API testing for a RESTful web service\api_test.robot">
+<test id="s1-t1" name="Get All Posts And Verify Schema" line="7">
+<kw name="Get Variable Value" library="BuiltIn">
+<var>${url}</var>
+<arg>${ENDPOINTS.posts.url}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<msg timestamp="20230419 21:53:43.502" level="INFO">${url} = None</msg>
+<status status="PASS" starttime="20230419 21:53:43.502" endtime="20230419 21:53:43.502"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>JsonPlaceholder</arg>
+<arg>${url}/</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230419 21:53:43.503" level="INFO">Creating Session using : alias=JsonPlaceholder, url=None/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230419 21:53:43.503" endtime="20230419 21:53:43.503"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>JsonPlaceholder</arg>
+<arg>/</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230419 21:53:43.505" level="FAIL">MissingSchema: Invalid URL 'None/': No scheme supplied. Perhaps you meant https://None/?</msg>
+<status status="FAIL" starttime="20230419 21:53:43.503" endtime="20230419 21:53:43.506"/>
+</kw>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>200</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="NOT RUN" starttime="20230419 21:53:43.506" endtime="20230419 21:53:43.506"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${json_data}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230419 21:53:43.507" endtime="20230419 21:53:43.507"/>
+</kw>
+<kw name="Verify JSON Schema">
+<arg>${json_data}</arg>
+<arg>${ENDPOINTS.posts.schema}</arg>
+<status status="NOT RUN" starttime="20230419 21:53:43.507" endtime="20230419 21:53:43.507"/>
+</kw>
+<status status="FAIL" starttime="20230419 21:53:43.501" endtime="20230419 21:53:43.508">MissingSchema: Invalid URL 'None/': No scheme supplied. Perhaps you meant https://None/?</status>
+</test>
+<test id="s1-t2" name="Get All Users And Verify Schema" line="15">
+<kw name="Get Variable Value" library="BuiltIn">
+<var>${url}</var>
+<arg>${ENDPOINTS.users.url}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<msg timestamp="20230419 21:53:43.509" level="INFO">${url} = None</msg>
+<status status="PASS" starttime="20230419 21:53:43.509" endtime="20230419 21:53:43.509"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>JsonPlaceholder</arg>
+<arg>${url}/</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230419 21:53:43.510" level="INFO">Creating Session using : alias=JsonPlaceholder, url=None/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230419 21:53:43.510" endtime="20230419 21:53:43.510"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>JsonPlaceholder</arg>
+<arg>/</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230419 21:53:43.511" level="FAIL">MissingSchema: Invalid URL 'None/': No scheme supplied. Perhaps you meant https://None/?</msg>
+<status status="FAIL" starttime="20230419 21:53:43.510" endtime="20230419 21:53:43.511"/>
+</kw>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>200</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="NOT RUN" starttime="20230419 21:53:43.511" endtime="20230419 21:53:43.511"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${json_data}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20230419 21:53:43.512" endtime="20230419 21:53:43.512"/>
+</kw>
+<kw name="Verify JSON Schema">
+<arg>${json_data}</arg>
+<arg>${ENDPOINTS.users.schema}</arg>
+<status status="NOT RUN" starttime="20230419 21:53:43.512" endtime="20230419 21:53:43.512"/>
+</kw>
+<status status="FAIL" starttime="20230419 21:53:43.508" endtime="20230419 21:53:43.512">MissingSchema: Invalid URL 'None/': No scheme supplied. Perhaps you meant https://None/?</status>
+</test>
+<status status="FAIL" starttime="20230419 21:53:43.358" endtime="20230419 21:53:43.513"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="2" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="2" skip="0" id="s1" name="Api Test">Api Test</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
